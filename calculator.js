@@ -33,11 +33,9 @@ btns.forEach((button) => {
 
         // reset the calculator
         if (btnVal === "C") {
-            currentInput = "0";
-            result = 0;
-            operatorCount = 0;
-            disableDecimal();
             
+            resetCalculator();
+        
         // delete previous number
         } else if (btnVal === "DEL" ) {
 
@@ -153,4 +151,12 @@ decimalBtn.addEventListener('click', ( ) => decimalBtn.setAttribute("disabled", 
 function disableDecimal() {
 
     decimalBtn.removeAttribute("disabled", "");
+}
+
+function resetCalculator() {
+
+    currentInput = "0";
+    result = 0;
+    operatorCount = 0;
+    disableDecimal();
 }
