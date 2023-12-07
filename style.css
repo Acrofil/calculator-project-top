@@ -9,6 +9,7 @@
     width: 100%;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     
@@ -46,8 +47,7 @@
     width: 380px;
     height: 200px;
     border-top-right-radius: 15px;
-    border-top-left-radius: 15px;
-  
+    border-top-left-radius: 15px;  
 }
 
 .panelBox {
@@ -98,7 +98,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-self: center;
-    padding: 10px;
+
 
     text-align: right;
     border-radius: 15px;
@@ -112,6 +112,7 @@
 
 .previousNumbers {
 
+    
     font-size: 35px;
 }
 
@@ -126,8 +127,6 @@
     grid-template-columns: repeat(4, 75px);
     grid-gap: 10px;
     padding: 10px;
-    
-    
 }
 
 .buttons button {
@@ -202,21 +201,17 @@
     grid-column: 1 / -1;
 }
 
-/*
-.calculator .numberBtn {
-    cursor: pointer;
-    font-size: 32px;
-    border: 1px solid black;
-    outline: none;  
+.signature {
+
+    margin-top: 10px;
+
+    font-size: 22px;
+    color: black;
+    font-weight: 900;
 }
 
+.signature > a {
 
-
-
-
-
-.calculator .numberBtn:hover {
-    background-color: #9ccbf7;
+    color: rgb(121, 9, 185);
+    text-decoration: none;
 }
-*/
-
