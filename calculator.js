@@ -13,9 +13,8 @@ const decimalBtn = document.querySelector(".decimal");
 let resultSum = document.createElement('div');
 let input = document.createElement('div');
 
-const operators = [' + ', ' - ', ' * ', ' / '];
+const operators = [' + ', ' - ', ' * ', ' / ', '+', '-', '/', '*'];
 let operatorCount = 0;
-
 let currentInput = "0";
 
 btns.forEach((button) => {
@@ -45,10 +44,12 @@ btns.forEach((button) => {
 
             currentInput = "";
             currentInput += btnVal;
+    
 
         } else {
 
-            currentInput += btnVal;
+            checkOperatorInput(btnVal);
+            currentInput += btnVal;   
         }
 
         if (btnVal === " = ") {
@@ -69,6 +70,19 @@ btns.forEach((button) => {
             
     });
 });
+
+// check if previous char is operator and replace it with current operator
+function checkOperatorInput(btnVal) {
+
+    let lastIndex = currentInput.length - 2
+    let lastOperator = currentInput[lastIndex];
+
+    if (operators.includes(lastOperator) && operators.includes(btnVal)) {
+        let replacedOperator = currentInput.replace(` ${lastOperator} `, "")
+        currentInput = replacedOperator;
+        operatorCount = 1;
+    }
+}
 
 // split the string, convert to numbers
 function strSplitAndEvalResult() {
@@ -92,6 +106,7 @@ function strSplitAndEvalResult() {
         let secondOperator = inputNumbers[3];
 
         operate(operator, numberA, numberB); 
+        checkFloat();
         currentInput = `${result} ${secondOperator} `;
         operatorCount = 1;
         return
@@ -99,9 +114,19 @@ function strSplitAndEvalResult() {
 
     // default behavior
     operate(operator, numberA, numberB); 
+    checkFloat();
     currentInput = `${result}`;
     operatorCount = 0;
     
+}
+
+function checkFloat(){
+
+    if (!Number.isInteger(+result)) {
+
+        result = result.toFixed(2);
+    }
+
 }
 
 // determine which operation to be executed
